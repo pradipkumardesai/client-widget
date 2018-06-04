@@ -3,16 +3,25 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { ClientMainComponent } from './components/client-main/client-main.component';
+import { ClientDetailsComponent } from './components/client-details/client-details.component';
+import { ClientService } from './services/client/client.service';
+import { ClientRouteModule } from './app.route.module';
+import { NoPageFoundComponent } from './components/no-page-found/no-page-found.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ClientMainComponent,
+    ClientDetailsComponent,
+    NoPageFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ClientRouteModule
   ],
-  providers: [],
+  providers: [ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
