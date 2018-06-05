@@ -10,7 +10,7 @@ const clientRoutes:Routes=[
     { path:"details/:id",component:ClientDetailsComponent}
 ];
 @NgModule({
-    imports:[RouterModule.forRoot(clientRoutes)],
+    imports:[RouterModule.forRoot(clientRoutes,{ useHash:true})],
     exports:[RouterModule]
 })
 export class ClientRouteModule{
