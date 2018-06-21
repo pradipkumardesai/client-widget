@@ -12,8 +12,8 @@ export class ClientService {
 
   private setClients(){
     this.clients = new Array<Client>();
-    this.clients.push(new Client(1,"Client1","Address1"));
-    this.clients.push(new Client(2,"Client2","Address2"));
+    this.clients.push(new Client(1,"Client11","Address11"));
+    this.clients.push(new Client(2,"Client22","Address22"));
   }
 
   public getClientById(id:Number){
