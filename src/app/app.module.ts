@@ -8,6 +8,7 @@ import { ClientDetailsComponent } from './components/client-details/client-detai
 import { ClientService } from './services/client/client.service';
 import { ClientRouteModule } from './app.route.module';
 import { NoPageFoundComponent } from './components/no-page-found/no-page-found.component';
+import { BridgeModule } from './bridge/bridge.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NoPageFoundComponent } from './components/no-page-found/no-page-found.c
   ],
   imports: [
     BrowserModule,
-    ClientRouteModule
+    ClientRouteModule,
+    BridgeModule
   ],
   providers: [ClientService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClientService } from '../../services/client/client.service';
+import { IframeToParentService } from '../../bridge/services/iframe-to-parent.service';
 
 @Component({
   selector: 'cch-client-main',
@@ -12,21 +13,17 @@ export class ClientMainComponent implements OnInit {
   id:string;
   name:string;
 
-  constructor(private route:ActivatedRoute,private clientService:ClientService) { 
-   
-  }
-
-  receiveMessage(event){
-    if (event.origin === "http://localhost:4200")
-      alert(JSON.stringify(event.origin +" - "+ event.data));
+  constructor(private route:ActivatedRoute,private clientService:ClientService,private iframeToParentService:IframeToParentService) { 
+    this.iframeToParentService.onParentMessageReceived.subscribe(data=>{
+      alert(data);
+    });
   }
 
   callParent(){
-    window.parent.postMessage("Hello from child", '*');
+    this.iframeToParentService.sendMessageToParent("Hello from child");
   }
 
-  ngOnInit() {
-    window.addEventListener("message", this.receiveMessage, false);
+  ngOnInit() {   
     let id:number = Number(this.route.snapshot.paramMap.get('id'));
     console.log(id);
     this.name = this.clientService.getClientById(id).name;
